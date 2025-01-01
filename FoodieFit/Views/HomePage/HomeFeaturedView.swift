@@ -10,29 +10,13 @@ import UIKit
 class HomeFeaturedView: UIView {
     let databaseData = DatabaseData.shared
     
-    private var collectionHeader: UIStackView = {
-        let stackview = UIStackView()
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .horizontal
-        stackview.distribution = .equalSpacing
-        
-        return stackview
-    }()
     private var headerLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "FEATURED"
         label.font = .systemFont(ofSize: 25, weight: .semibold)
         
         return label
-    }()
-    private lazy var headerButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("See All", for: .normal)
-        button.setTitleColor(.bwOpposite, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(goToFullMenu), for: .touchUpInside)
-        
-        return button
     }()
     
     private var collection: UICollectionView!
@@ -40,7 +24,7 @@ class HomeFeaturedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .bwMain
-
+        
         let gap = 10.0
         let itemWidth = 270.0
         let itemHeight = 350.0
@@ -49,16 +33,13 @@ class HomeFeaturedView: UIView {
         
         self.frame = CGRect(x: 0, y: 0, width: bounds.width, height: collectionHeight)
         
-        addSubview(collectionHeader)
+        addSubview(headerLabel)
         NSLayoutConstraint.activate([
-            collectionHeader.heightAnchor.constraint(equalToConstant: headerHeight),
-            collectionHeader.widthAnchor.constraint(equalToConstant: bounds.width - 30),
-            collectionHeader.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionHeader.topAnchor.constraint(equalTo: topAnchor)
+            headerLabel.heightAnchor.constraint(equalToConstant: headerHeight),
+            headerLabel.widthAnchor.constraint(equalToConstant: bounds.width - 30),
+            headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor)
         ])
-        
-        collectionHeader.addArrangedSubview(headerLabel)
-        collectionHeader.addArrangedSubview(headerButton)
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
@@ -77,17 +58,13 @@ class HomeFeaturedView: UIView {
         NSLayoutConstraint.activate([
             collection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             collection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            collection.topAnchor.constraint(equalTo: collectionHeader.bottomAnchor),
+            collection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),
             collection.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func goToFullMenu() {
-        print("View Full Menu Pressed!")
     }
 }
 
@@ -96,7 +73,6 @@ extension HomeFeaturedView: UICollectionViewDelegate {
         print("\(databaseData.featuredItems[indexPath.row].name) Clicked")
     }
 }
-
 
 extension HomeFeaturedView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

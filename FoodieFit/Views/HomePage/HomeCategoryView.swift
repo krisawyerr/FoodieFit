@@ -9,6 +9,8 @@ import UIKit
 
 class HomeCategoryView: UIView {
     let databaseData = DatabaseData.shared
+    let navigate = Navigation()
+    var navigationController: UINavigationController?
     
     private var collectionHeader: UIStackView = {
         let stackview = UIStackView()
@@ -35,8 +37,10 @@ class HomeCategoryView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, navigationController: UINavigationController?) {
+        self.navigationController = navigationController
         super.init(frame: frame)
+        
         backgroundColor = .bwMain
 
         let collectionWidth = bounds.width - 20
@@ -86,13 +90,24 @@ class HomeCategoryView: UIView {
     }
     
     @objc func goToFullMenu() {
-        print("View Full Menu Pressed!")
+        guard let navigator = navigationController else { return }
+        
+        navigate.goToProductsList(
+            category: "All Products",
+            products: databaseData.items,
+            navigationController: navigator
+        )
     }
-    
 }
 extension HomeCategoryView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(databaseData.categories[indexPath.row].name) Clicked")
+        guard let navigator = navigationController else { return }
+        
+        navigate.goToProductsList(
+            category: databaseData.categories[indexPath.row].name,
+            products: databaseData.items.filter { $0.status.lowercased() == databaseData.categories[indexPath.row].name.lowercased() },
+            navigationController: navigator
+        )
     }
 }
 extension HomeCategoryView: UICollectionViewDataSource {

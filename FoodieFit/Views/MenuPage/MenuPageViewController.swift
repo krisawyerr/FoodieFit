@@ -10,6 +10,8 @@ import SDWebImage
 
 class MenuPageViewController: UIViewController {
     let databaseData = DatabaseData.shared
+    let navigate = Navigation()
+    
     private var logo: UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +35,7 @@ class MenuPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Background")
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(logo)
         NSLayoutConstraint.activate([
@@ -43,7 +46,7 @@ class MenuPageViewController: UIViewController {
         
         view.addSubview(table)
         NSLayoutConstraint.activate([
-            table.topAnchor.constraint(equalTo: logo.bottomAnchor),
+            table.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 10),
             table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             table.widthAnchor.constraint(equalToConstant: view.bounds.width)
         ])
@@ -81,8 +84,16 @@ extension MenuPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125.0
     }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Cat pressed")
+        guard let navigator = navigationController else { return }
+        
+        navigate.goToProductsList(
+            category: indexPath.row == 0 ? "All Products" : databaseData.categories[indexPath.row - 1].name,
+            products: indexPath.row == 0 ? databaseData.items : databaseData.items.filter { $0.status.lowercased() == databaseData.categories[indexPath.row - 1].name.lowercased() },
+            navigationController: navigator
+        )
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

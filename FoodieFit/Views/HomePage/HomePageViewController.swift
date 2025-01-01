@@ -37,12 +37,13 @@ class HomePageViewController: UIViewController {
     }()
     
     lazy var homeHeader = HomeHeaderView(frame: view.bounds)
-    lazy var homeCatagories = HomeCategoryView(frame: view.bounds)
+    lazy var homeCatagories = HomeCategoryView(frame: view.bounds, navigationController: navigationController)
     lazy var homeFeatured = HomeFeaturedView(frame: view.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Background")
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(logo)
         NSLayoutConstraint.activate([

@@ -14,11 +14,11 @@ class TabBarViewController: UIViewController {
         tabbar.tabBar.tintColor = UIColor(named: "Selected")
         tabbar.tabBar.unselectedItemTintColor = UIColor(named: "Unselected")
         
-        let homeVC = HomePageViewController()
+        let homeVC = UINavigationController(rootViewController: HomePageViewController())
         let homeTab = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         homeVC.tabBarItem = homeTab
         
-        let menuVC = MenuPageViewController()
+        let menuVC = UINavigationController(rootViewController: MenuPageViewController())
         let menuTab = UITabBarItem(title: "Menu", image: UIImage(systemName: "menucard"), selectedImage: UIImage(systemName: "menucard.fill"))
         menuVC.tabBarItem = menuTab
         
@@ -32,7 +32,7 @@ class TabBarViewController: UIViewController {
         cartVC.tabBarItem.badgeColor = .clear
         cartVC.tabBarItem.badgeValue = ""
         
-        tabbar.setViewControllers([/*homeVC,*/ menuVC, profileVC, cartVC], animated: false)
+        tabbar.setViewControllers([homeVC, menuVC, profileVC, cartVC], animated: false)
         return tabbar
     }()
     let databaseData = DatabaseData.shared
