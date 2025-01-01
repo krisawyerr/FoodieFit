@@ -44,7 +44,7 @@ class TabBarViewController: UIViewController {
         view.addSubview(tabbar.view)
         tabbar.didMove(toParent: self)
         
-        databaseData.fetchCategories()
+        databaseData.fetchProductData()
     }
 }
 #Preview {

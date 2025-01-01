@@ -72,7 +72,7 @@ class HomePageViewController: UIViewController {
         NSLayoutConstraint.activate([
             homeHeader.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5),
             homeCatagories.heightAnchor.constraint(equalToConstant: homeCatagories.bounds.height),
-            homeFeatured.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5)
+            homeFeatured.heightAnchor.constraint(equalToConstant: homeFeatured.bounds.height)
         ])
     }
 } 

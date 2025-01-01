@@ -13,16 +13,22 @@ class DatabaseData {
     private init() {}
     
     var categories: [Category] = []
+    var featuredItems: [Product] = []
     
-    func fetchCategories() {
-        guard let file = Bundle.main.url(forResource: "Categories", withExtension: "json") else {
+    func fetchProductData() {
+        guard let categoriesFile = Bundle.main.url(forResource: "Categories", withExtension: "json"),
+              let featuredFile = Bundle.main.url(forResource: "Featured", withExtension: "json") else {
             return
         }
         
         do {
-            let data = try Data(contentsOf: file)
-            self.categories = try JSONDecoder().decode([Category].self, from: data)
-            print("Cats loaded")
+            let categoriesData = try Data(contentsOf: categoriesFile)
+            let featuredData = try Data(contentsOf: featuredFile)
+            
+            self.categories = try JSONDecoder().decode([Category].self, from: categoriesData)
+            self.featuredItems = try JSONDecoder().decode([Product].self, from: featuredData)
+            
+            print("Product data loaded")
         } catch {
             print("Error decoding JSON: \(error)")
             return

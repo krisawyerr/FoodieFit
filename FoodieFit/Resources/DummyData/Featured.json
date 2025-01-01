@@ -1,0 +1,20 @@
+[
+  {
+    "status": "Active",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/ec922c04-df61-6cc3-73c4-fca814145a82LargeSize?sv=2018-03-28&sr=b&sig=k0y9s8H3r9OxzA4Jld5oQIevhXCKxR81XSPyELVaOW4%3D&se=2025-01-15T22%3A06%3A30Z&sp=r",
+    "name": "Deconstructed Chicken Tamale",
+    "price": 9.99
+  },
+  {
+    "status": "Active",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/9479b9b1-81a4-e081-4566-51f98ee2f2caLargeSize?sv=2018-03-28&sr=b&sig=UCe%2FK6cRqa7ZMis7FopolbqibYuN6xxSquYErsL9%2Baw%3D&se=2025-01-15T22%3A07%3A08Z&sp=r",
+    "name": "Shepherd's Pie",
+    "price": 9.49
+  },
+  {
+    "status": "Breakfast",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/063ecf74-da01-c5ff-64de-38149a56ba27LargeSize?sv=2018-03-28&sr=b&sig=UuovwGbF8Zx%2FByJYg5xppC7Q6mOsw9WNeA1tcXLaA%2BE%3D&se=2025-01-15T22%3A17%3A00Z&sp=r",
+    "name": "Turkey Rancheros Breakfast Burrito",
+    "price": 6.99
+  }
+]
