@@ -7,33 +7,32 @@
 
 import UIKit
 
-private var homeHeaderImage: UIImageView = {
-    let imageview = UIImageView()
-    imageview.translatesAutoresizingMaskIntoConstraints = false
-    imageview.contentMode = .scaleAspectFill
-    imageview.image = UIImage(named: "HomeHeader")
-    
-    return imageview
-}()
-private var homeHeaderLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.numberOfLines = 0
-    
-    var styles = NSMutableAttributedString(
-        string: "Meal Prep\nMade Simple\nPerfect for all your health goals",
-        attributes: [
-            .foregroundColor: UIColor.white,
-            .font: UIFont.systemFont(ofSize: 19, weight: .heavy)
-        ]
-    )
-    styles.addAttribute(.font, value: UIFont.systemFont(ofSize: 45, weight: .heavy), range: NSRange(location: 0, length: 21))
-    label.attributedText = styles
-    
-    return label
-}()
-
 class HomeHeaderView: UIView {
+    private var homeHeaderImage: UIImageView = {
+        let imageview = UIImageView()
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageview.contentMode = .scaleAspectFill
+        imageview.image = UIImage(named: "HomeHeader")
+        
+        return imageview
+    }()
+    private var homeHeaderLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
+        var styles = NSMutableAttributedString(
+            string: "Meal Prep\nMade Simple\nPerfect for all your health goals",
+            attributes: [
+                .foregroundColor: UIColor.white,
+                .font: UIFont.systemFont(ofSize: 19, weight: .heavy)
+            ]
+        )
+        styles.addAttribute(.font, value: UIFont.systemFont(ofSize: 45, weight: .heavy), range: NSRange(location: 0, length: 21))
+        label.attributedText = styles
+        
+        return label
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true

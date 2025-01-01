@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Active",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/398b7035-bad0-d010-4f6e-8ab884a1145eLargeSize?sv=2018-03-28&sr=b&sig=MjBhZ9Btq0CbpxE0lMXv5qQXlf%2BTJZBenOzEt2N4L7s%3D&se=2025-01-15T22%3A08%3A18Z&sp=r",
+  },
+  {
+    "name": "Breakfast",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/35121fdf-9f76-ca3c-a728-531dbc20a00cLargeSize?sv=2018-03-28&sr=b&sig=lVAa5IX%2BltievquFsv3irIiVz1Qgbck5DooSNSUxzFI%3D&se=2025-01-15T22%3A17%3A52Z&sp=r",
+  },
+  {
+    "name": "Low Carb",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/b7ef90f8-a852-15e9-1b5b-97297b694a25LargeSize?sv=2018-03-28&sr=b&sig=%2BJwpvGy8mz2%2FsL0Q0gcC8YekQvqUri9rRBJwECXlET8%3D&se=2025-01-15T22%3A23%3A10Z&sp=r",
+  },
+  {
+    "name": "Snack",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/b749ce71-dc60-7fdd-0cba-4c26e76e218bLargeSize?sv=2018-03-28&sr=b&sig=8kTkTRBfxlGBbRY%2Bda0AzJBrhCAVds7Mh6TToR%2Bav74%3D&se=2025-01-16T20%3A34%3A14Z&sp=r",
+  },
+  {
+    "name": "Drink",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/16fcd914-0dfa-ef3c-2425-f9f0428e0ca8LargeSize?sv=2018-03-28&sr=b&sig=LoRAwBA8OpKpN%2BwQmhlkir2zZ1xH7r0RZuSSMPH6LWs%3D&se=2025-01-16T23%3A24%3A38Z&sp=r",
+  }
+]

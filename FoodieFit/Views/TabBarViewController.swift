@@ -35,6 +35,7 @@ class TabBarViewController: UIViewController {
         tabbar.setViewControllers([homeVC, menuVC, profileVC, cartVC], animated: false)
         return tabbar
     }()
+    let databaseData = DatabaseData.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class TabBarViewController: UIViewController {
         addChild(tabbar)
         view.addSubview(tabbar.view)
         tabbar.didMove(toParent: self)
+        
+        databaseData.fetchCategories()
     }
 }
 #Preview {

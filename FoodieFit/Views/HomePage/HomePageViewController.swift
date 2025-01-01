@@ -19,7 +19,7 @@ class HomePageViewController: UIViewController {
     private var scrollview: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .bwMain
         view.showsVerticalScrollIndicator = false
         view.isScrollEnabled = true
        
@@ -35,22 +35,10 @@ class HomePageViewController: UIViewController {
         
         return view
     }()
-    private var view2: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .cyan
-        
-        return view
-    }()
-    private var view3: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .purple
-        
-        return view
-    }()
     
     lazy var homeHeader = HomeHeaderView(frame: view.bounds)
+    lazy var homeCatagories = HomeCategoryView(frame: view.bounds)
+    lazy var homeFeatured = HomeFeaturedView(frame: view.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,16 +66,16 @@ class HomePageViewController: UIViewController {
         ])
         
         stack.addArrangedSubview(homeHeader)
-        stack.addArrangedSubview(view2)
-        stack.addArrangedSubview(view3)
+        stack.addArrangedSubview(homeCatagories)
+        stack.addArrangedSubview(homeFeatured)
         
         NSLayoutConstraint.activate([
             homeHeader.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5),
-            view2.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5),
-            view3.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5)
+            homeCatagories.heightAnchor.constraint(equalToConstant: homeCatagories.bounds.height),
+            homeFeatured.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5)
         ])
     }
-}
+} 
 #Preview {
     TabBarViewController()
 }
