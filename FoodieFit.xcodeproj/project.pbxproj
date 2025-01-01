@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		07AAB03E2D25AF210033AC4C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 07AAB03D2D25AF210033AC4C /* SDWebImage */; };
+		07AAB0402D25AF210033AC4C /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 07AAB03F2D25AF210033AC4C /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		071E5B192D2477D600BE2884 /* FoodieFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07AAB0402D25AF210033AC4C /* SDWebImageMapKit in Frameworks */,
+				07AAB03E2D25AF210033AC4C /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = FoodieFit;
 			packageProductDependencies = (
+				07AAB03D2D25AF210033AC4C /* SDWebImage */,
+				07AAB03F2D25AF210033AC4C /* SDWebImageMapKit */,
 			);
 			productName = FoodieFit;
 			productReference = 071E5B192D2477D600BE2884 /* FoodieFit.app */;
@@ -107,6 +116,9 @@
 			);
 			mainGroup = 071E5B102D2477D600BE2884;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				07AAB03C2D25AF210033AC4C /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 071E5B1A2D2477D600BE2884 /* Products */;
 			projectDirPath = "";
@@ -335,6 +347,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		07AAB03C2D25AF210033AC4C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07AAB03D2D25AF210033AC4C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07AAB03C2D25AF210033AC4C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		07AAB03F2D25AF210033AC4C /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07AAB03C2D25AF210033AC4C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 071E5B112D2477D600BE2884 /* Project object */;
 }

@@ -16,5 +16,17 @@
     "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/063ecf74-da01-c5ff-64de-38149a56ba27LargeSize?sv=2018-03-28&sr=b&sig=UuovwGbF8Zx%2FByJYg5xppC7Q6mOsw9WNeA1tcXLaA%2BE%3D&se=2025-01-15T22%3A17%3A00Z&sp=r",
     "name": "Turkey Rancheros Breakfast Burrito",
     "price": 6.99
-  }
+  },
+  {
+    "status": "Breakfast",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/8a9bfe2e-d207-a0f6-a657-cbbfa043e911LargeSize?sv=2018-03-28&sr=b&sig=4EnnH1GS4uFMiYtsI5mMGGWuEuvzybKwNxfsj%2B2ABec%3D&se=2025-01-15T22%3A22%3A46Z&sp=r",
+    "name": "Ube French Toast Stix",
+    "price": 5.49
+  },
+  {
+    "status": "Low Carb",
+    "image_url": "https://mmaswcloud.blob.core.windows.net/mptimagecontainer/b7ef90f8-a852-15e9-1b5b-97297b694a25LargeSize?sv=2018-03-28&sr=b&sig=%2BJwpvGy8mz2%2FsL0Q0gcC8YekQvqUri9rRBJwECXlET8%3D&se=2025-01-15T22%3A23%3A10Z&sp=r",
+    "name": "Beef Birria Ramen",
+    "price": 8.99
+  },
 ]

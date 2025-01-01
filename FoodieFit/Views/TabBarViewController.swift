@@ -32,7 +32,7 @@ class TabBarViewController: UIViewController {
         cartVC.tabBarItem.badgeColor = .clear
         cartVC.tabBarItem.badgeValue = ""
         
-        tabbar.setViewControllers([homeVC, menuVC, profileVC, cartVC], animated: false)
+        tabbar.setViewControllers([/*homeVC,*/ menuVC, profileVC, cartVC], animated: false)
         return tabbar
     }()
     let databaseData = DatabaseData.shared
