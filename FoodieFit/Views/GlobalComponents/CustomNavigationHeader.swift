@@ -8,6 +8,7 @@
 import UIKit
 
 class CustomNavigationHeader: UIView {
+    let databaseData = DatabaseData.shared
     var navigationController: UINavigationController?
     var headerTitle: String?
     
@@ -30,8 +31,18 @@ class CustomNavigationHeader: UIView {
         
         return button
     }()
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .accent
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        button.addTarget(self, action: #selector(favoritePressed), for: .touchUpInside)
+        
+        return button
+    }()
     
-    init(frame: CGRect, navigationController: UINavigationController, headerTitle: String) {
+    init(frame: CGRect, navigationController: UINavigationController, headerTitle: String, product: Bool) {
         super.init(frame: frame)
         self.navigationController = navigationController
         self.headerTitle = headerTitle
@@ -53,13 +64,40 @@ class CustomNavigationHeader: UIView {
             backButton.widthAnchor.constraint(equalToConstant: 20),
             backButton.heightAnchor.constraint(equalToConstant: 20)
         ])
+        
+        if product {
+            addSubview(favoriteButton)
+            setDefaultFavoriteValue()
+            
+            NSLayoutConstraint.activate([
+                favoriteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+                favoriteButton.widthAnchor.constraint(equalToConstant: 20),
+                favoriteButton.heightAnchor.constraint(equalToConstant: 20)
+            ])
+        }
     }
-    
+    func setDefaultFavoriteValue() {
+        let isFavorited = databaseData.favoriteItems.contains(where: { $0.name.lowercased() == headerTitle?.lowercased()})
+        favoriteButton.isSelected = isFavorited
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
     }
+    @objc func favoritePressed() {
+        if favoriteButton.isSelected {
+            databaseData.removeFavoriteItem(item: headerTitle!)
+        } else {
+            databaseData.addFavoriteItem(item: headerTitle!)
+        }
+        
+        favoriteButton.isSelected = !favoriteButton.isSelected
+    }
     
+}
+#Preview {
+    TabBarViewController()
 }

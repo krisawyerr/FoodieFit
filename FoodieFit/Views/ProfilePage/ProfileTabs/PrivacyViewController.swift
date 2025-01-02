@@ -10,7 +10,7 @@ import UIKit
 class PrivacyViewController: UIViewController {
     var legalText = Legal()
     
-    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Privacy Policy")
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Privacy Policy", product: false)
     private lazy var textview: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false

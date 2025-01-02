@@ -9,7 +9,7 @@ import UIKit
 
 class ContactViewController: UIViewController {
     let contact = Contact()
-    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Contact Us")
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Contact Us", product: false)
     
     private lazy var table: UITableView = {
         let table = UITableView()

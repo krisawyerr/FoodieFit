@@ -133,7 +133,7 @@ extension MenuItemsViewController: UITableViewDelegate {
         guard let navigator = navigationController else { return }
         
         navigate.goToProducts(
-            product: [products![indexPath.row]],
+            product: [filteredProducts![indexPath.row]],
             navigationController: navigator
         )
         

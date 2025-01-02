@@ -8,7 +8,7 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
-    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Favorite Products")
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Favorite Products", product: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()

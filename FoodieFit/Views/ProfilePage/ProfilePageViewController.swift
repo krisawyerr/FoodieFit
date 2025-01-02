@@ -8,9 +8,12 @@
 import UIKit
 
 class ProfilePageViewController: UIViewController {
+    let navigate = Navigation()
+    let databaseData = DatabaseData.shared
+    
     private var profileTabs: [ProfileSection] = [
         ProfileSection(name: "User Info", tabs: [
-            ProfileTab(name: "Favorites", viewController: FavoritesViewController()),
+            ProfileTab(name: "Favorites"),
             ProfileTab(name: "History", viewController: HistoryViewController()),
         ]),
         ProfileSection(name: "General Info", tabs: [
@@ -62,8 +65,21 @@ class ProfilePageViewController: UIViewController {
 }
 extension ProfilePageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedVC: UIViewController = profileTabs[indexPath.section].tabs[indexPath.row].viewController
-        navigationController?.pushViewController(selectedVC, animated: true)
+        guard let navigator = navigationController else { return }
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            navigate.goToProductsList(
+                category: "Favorite Products",
+                products: databaseData.items.filter { item in
+                    databaseData.favoriteItems.contains { $0.name.lowercased() == item.name.lowercased() }
+                },
+                navigationController: navigator
+            )
+        } else {
+            let selectedVC: UIViewController = profileTabs[indexPath.section].tabs[indexPath.row].viewController!
+            navigator.pushViewController(selectedVC, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,5 +110,5 @@ extension ProfilePageViewController: UITableViewDataSource {
     
 }
 #Preview {
-    UINavigationController(rootViewController: ProfilePageViewController())
+    TabBarViewController()
 }

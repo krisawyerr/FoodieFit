@@ -10,7 +10,7 @@ import UIKit
 class TermsAndConditionsViewController: UIViewController {
     var legalText = Legal()
     
-    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Terms and Conditions")
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Terms and Conditions", product: false)
     private lazy var textview: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false

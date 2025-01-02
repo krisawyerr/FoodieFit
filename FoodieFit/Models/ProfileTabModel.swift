@@ -9,7 +9,7 @@ import UIKit
 
 struct ProfileTab {
     var name: String
-    var viewController: UIViewController
+    var viewController: UIViewController?
 }
 struct ProfileSection {
     var name: String

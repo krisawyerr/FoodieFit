@@ -8,7 +8,7 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
-    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Past Orders")
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: "Past Orders", product: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
