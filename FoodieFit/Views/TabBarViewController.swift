@@ -22,7 +22,7 @@ class TabBarViewController: UIViewController {
         let menuTab = UITabBarItem(title: "Menu", image: UIImage(systemName: "menucard"), selectedImage: UIImage(systemName: "menucard.fill"))
         menuVC.tabBarItem = menuTab
         
-        let profileVC = ProfilePageViewController()
+        let profileVC = UINavigationController(rootViewController: ProfilePageViewController())
         let profileTab = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         profileVC.tabBarItem = profileTab
         

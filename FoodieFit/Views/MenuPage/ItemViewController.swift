@@ -10,7 +10,7 @@ import UIKit
 class ItemViewController: UIViewController {
     var product: Product?
     
-    private lazy var headerSection = ItemViewHeaderView(frame: view.bounds, navigationController: navigationController!, product: product!)
+    private lazy var headerSection = CustomNavigationHeader(frame: view.bounds, navigationController: navigationController!, headerTitle: product!.name)
     private lazy var footerSection = ItemViewFooterView(frame: view.bounds, navigationController: navigationController!, product: product!, tabBarController: tabBarController!)
     
     private var mainBody: UIView = {

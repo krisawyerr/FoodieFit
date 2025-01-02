@@ -1,5 +1,5 @@
 //
-//  ItemViewHeaderView.swift
+//  CustomNavigationHeader.swift
 //  FoodieFit
 //
 //  Created by Kris Sawyerr on 1/1/25.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class ItemViewHeaderView: UIView {
+class CustomNavigationHeader: UIView {
     var navigationController: UINavigationController?
-    var product: Product?
+    var headerTitle: String?
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 15)
-        label.text = product?.name.uppercased()
+        label.text = headerTitle?.uppercased()
         label.numberOfLines = 0
         label.textAlignment = .center
         
@@ -31,10 +31,10 @@ class ItemViewHeaderView: UIView {
         return button
     }()
     
-    init(frame: CGRect, navigationController: UINavigationController, product: Product) {
+    init(frame: CGRect, navigationController: UINavigationController, headerTitle: String) {
         super.init(frame: frame)
         self.navigationController = navigationController
-        self.product = product
+        self.headerTitle = headerTitle
         
         translatesAutoresizingMaskIntoConstraints = false
         
