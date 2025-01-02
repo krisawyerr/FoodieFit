@@ -9,6 +9,8 @@ import UIKit
 
 class HomeFeaturedView: UIView {
     let databaseData = DatabaseData.shared
+    let navigate = Navigation()
+    var navigationController: UINavigationController?
     
     private var headerLabel: UILabel = {
         let label = UILabel()
@@ -21,7 +23,8 @@ class HomeFeaturedView: UIView {
     
     private var collection: UICollectionView!
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, navigationController: UINavigationController?) {
+        self.navigationController = navigationController
         super.init(frame: frame)
         backgroundColor = .bwMain
         
@@ -71,6 +74,12 @@ class HomeFeaturedView: UIView {
 extension HomeFeaturedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(databaseData.featuredItems[indexPath.row].name) Clicked")
+        guard let navigator = navigationController else { return }
+        
+        navigate.goToProducts(
+            product: databaseData.items.filter { $0.name.lowercased() == databaseData.featuredItems[indexPath.row].name.lowercased() },
+            navigationController: navigator
+        )
     }
 }
 

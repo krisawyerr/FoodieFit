@@ -16,4 +16,12 @@ class Navigation {
         
         navigationController.pushViewController(productsVC, animated: true)
     }
+    
+    func goToProducts(product: [Product], navigationController: UINavigationController) {
+        let productVC = ItemViewController()
+        
+        productVC.product = product[0]
+        
+        navigationController.pushViewController(productVC, animated: true)
+    }
 }

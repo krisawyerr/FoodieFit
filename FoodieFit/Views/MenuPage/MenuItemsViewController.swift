@@ -10,6 +10,7 @@ import UIKit
 class MenuItemsViewController: UIViewController {
     var category: String?
     var products: [Product]?
+    var navigate = Navigation()
     private lazy var filteredProducts: [Product]? = products
     
     private var headerSection: UIView = {
@@ -128,6 +129,14 @@ extension MenuItemsViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tapped")
+        
+        guard let navigator = navigationController else { return }
+        
+        navigate.goToProducts(
+            product: [products![indexPath.row]],
+            navigationController: navigator
+        )
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

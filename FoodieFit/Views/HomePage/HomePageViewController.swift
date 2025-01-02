@@ -38,7 +38,7 @@ class HomePageViewController: UIViewController {
     
     lazy var homeHeader = HomeHeaderView(frame: view.bounds)
     lazy var homeCatagories = HomeCategoryView(frame: view.bounds, navigationController: navigationController)
-    lazy var homeFeatured = HomeFeaturedView(frame: view.bounds)
+    lazy var homeFeatured = HomeFeaturedView(frame: view.bounds, navigationController: navigationController)
     
     override func viewDidLoad() {
         super.viewDidLoad()
