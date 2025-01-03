@@ -1,5 +1,5 @@
 //
-//  CustomStepper.swift
+//  ItemStepper.swift
 //  FoodieFit
 //
 //  Created by Kris Sawyerr on 1/1/25.
@@ -7,12 +7,18 @@
 
 import UIKit
 
-class CustomStepper: UIView {
+class ItemStepper: UIView {
+    let formatter = Formatting()
     var product: Product?
-    var quantity: Int?
+    var onQuantityChange: ((Int) -> Void)?
+    var quantity: Int? {
+        didSet {
+            onQuantityChange?(quantity ?? 1)
+        }
+    }
     var addToCartButton: UIButton?
     private var total: String {
-        return String(format: "%.2f", Float(quantity ?? 1) * product!.price)
+        return formatter.price(number: Float(quantity ?? 1) * product!.price)
     }
     
     private lazy var addButton: UIImageView = {
@@ -57,11 +63,12 @@ class CustomStepper: UIView {
         return label
     }()
     
-    init(frame: CGRect, quantity: Int, addToCartButton: UIButton, product: Product) {
+    init(frame: CGRect, quantity: Int, addToCartButton: UIButton, product: Product, onQuantityChange: @escaping (Int) -> Void) {
         super.init(frame: frame)
         self.quantity = quantity
         self.addToCartButton = addToCartButton
         self.product = product
+        self.onQuantityChange = onQuantityChange
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -108,7 +115,10 @@ class CustomStepper: UIView {
             quantity! -= 1
         }
         
-        addToCartButton!.setTitle("Add To Cart: $\(total)", for: .normal)
+        addToCartButton!.setTitle("Add To Cart: \(total)", for: .normal)
         count.text = "\(quantity!)"
     }
+}
+#Preview {
+    TabBarViewController()
 }

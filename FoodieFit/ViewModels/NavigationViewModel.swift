@@ -24,4 +24,12 @@ class Navigation {
         
         navigationController.pushViewController(productVC, animated: true)
     }
+    
+    func goToOrderItemList(order: Orders, navigationController: UINavigationController) {
+        let orderVC = OrderViewController()
+        
+        orderVC.order = order
+        
+        navigationController.pushViewController(orderVC, animated: true)
+    }
 }

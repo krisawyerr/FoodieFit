@@ -8,20 +8,31 @@
 import UIKit
 
 class ItemViewFooterView: UIView {
+    let formatter = Formatting()
     var navigationController: UINavigationController?
     var tabBarController: UITabBarController?
     var product: Product?
     var cart = Cart.shared
-    private var quantity: Int = 1
+    var quantity: Int = 1
     private var total: String {
-        return String(format: "%.2f", Float(quantity) * product!.price)
+        return formatter.price(number: Float(quantity) * product!.price)
     }
     
-    private lazy var stepper = CustomStepper(frame: frame, quantity: quantity, addToCartButton: addToCartButton, product: product!)
-
+    private lazy var stepper = ItemStepper(
+        frame: frame,
+        quantity: quantity,
+        addToCartButton: addToCartButton,
+        product: product!,
+        onQuantityChange: { [weak self] newQuantity in
+            guard let self = self else { return }
+            self.quantity = newQuantity
+            self.addToCartButton.setTitle("Add To Cart: \(total)", for: .normal)
+        }
+    )
+    
     private lazy var addToCartButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add To Cart: $\(total)", for: .normal)
+        button.setTitle("Add To Cart: \(total)", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         button.backgroundColor = UIColor(named: "BWOpposite")
         button.setTitleColor(UIColor(named: "BWMain"), for: .normal)
@@ -65,6 +76,7 @@ class ItemViewFooterView: UIView {
     @objc func addToCart() {
         guard let tabbar = tabBarController, let name = product?.name, let price = product?.price else { return }
         
+        print(quantity)
         cart.addItems(product: CartItem(name: name, price: price, quantity: quantity), tabbar: tabbar)
         
         navigationController?.popViewController(animated: true)

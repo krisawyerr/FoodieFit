@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TabBarViewController: UIViewController {
     public var tabbar: UITabBarController = {
@@ -39,6 +40,14 @@ class TabBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Permission granted for notifications")
+            } else {
+                print("Permission denied for notifications")
+            }
+        }
         
         addChild(tabbar)
         view.addSubview(tabbar.view)
